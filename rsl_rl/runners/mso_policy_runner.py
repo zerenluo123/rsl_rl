@@ -108,7 +108,7 @@ class MSOPolicyRunner(OnPolicyRunner): # inherit from on policy runner
                     self.env.set_env_params()  # optimizer's envs are updated automatically
 
                     # get optimized embeddings, interact with env inside
-                    skill_optimizer.optimize(maxiter=10)
+                    skill_optimizer.optimize(maxiter=self.mso_cfg['max_optim_iter'])
                     optimized_embedding = skill_optimizer.best_x  # dim: (env_nums, x_dim)
                     optimized_embedding = torch.from_numpy(optimized_embedding).to(self.device).to(torch.float)
 
